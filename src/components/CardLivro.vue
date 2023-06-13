@@ -1,8 +1,9 @@
 <script setup>
-import {adicionarAoCarrinho} from '@/_data/carrinho.js'
+import { adicionarAoCarrinho } from '@/_data/carrinho.js'
 const props = defineProps({
   livro: Object
 })
+import MButton from './MButton.vue';
 
 function formatarPreco(preco) {
   return 'R$ ' + preco.toFixed(2).replace('.', ',')
@@ -20,7 +21,8 @@ function formatarPreco(preco) {
       <p class="preco-livro">{{ formatarPreco(livro.price) }}</p>
     </div>
     <div class="card-buttons-livros">
-      <button @click="adicionarAoCarrinho(props.livro)">Adicionar ao carrinho</button>
+      <m-button @click="adicionarAoCarrinho(props.livro)" text="Adicionar ao carrinho" />
+      <m-button text="Compartilhar"/>
     </div>
   </div>
 </template>
@@ -84,9 +86,6 @@ function formatarPreco(preco) {
   grid-template-columns: 3fr 1fr;
 }
 
-.carrinho {
-  /* min-width: 20%; */
-}
 .listagem-livros {
   display: flex;
   flex-wrap: wrap;
